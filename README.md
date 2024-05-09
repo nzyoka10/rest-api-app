@@ -44,7 +44,7 @@ Start the MongoDB server using the appropriate command (refer to the installatio
 ```bash
     node server.js
 ```
-- Your RESTful API for products will be accessible at:`` http://localhost:3000/products``
+- Your RESTful API for products will be accessible at: `` http://localhost:3000/products``
 ------------------------------
 
 **Note:** The code provided here is just a basic example of how you could structure your project files.
