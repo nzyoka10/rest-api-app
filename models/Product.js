@@ -1,21 +1,24 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = require('../database/connection');
+const { Sequelize } = require('sequelize');
+const { sequelize } = require('../server');
+
 
 // Define the Product model
 const Product = sequelize.define('Product', {
   // Define your product attributes here
   name: {
-    type: DataTypes.STRING,
+    type: Sequelize.STRING,
     allowNull: false,
   },
   price: {
-    type: DataTypes.DECIMAL(10, 2),
+    type: Sequelize.DECIMAL(10, 2),
     allowNull: false,
   },
   description: {
-    type: DataTypes.TEXT,
+    type: Sequelize.TEXT,
     allowNull: true,
   },
 });
 
-module.exports = Product;
+// Export the sequelize object
+module.exports = { sequelize, Product };
+// module.exports = Product;

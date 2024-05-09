@@ -48,7 +48,7 @@ sequelize.sync().then(() => {
 });
 
 // Product route
-app.use("/products", require("./routes/products"));
+app.use("/products", require("./routes/product"));
 
 // Start server
 app.listen(PORT, () => {
