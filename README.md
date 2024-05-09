@@ -1,50 +1,42 @@
-##  Simple rest-API
------- 
-###### 1. Setup NodeJS project:
+# Simple REST API with MySQL
+
+---
+
+#### 1. Setup Node.js Project:
+- Initialize a Node.js project and install necessary dependencies like Express, Sequelize (an ORM for MySQL), and Body-parser.
 
 ```bash
 npm init -y
+npm install express sequelize body-parser mysql2
 ```
+#### 2. MySQL Installation and Setup:
+- Install MySQL on your ``local machine`` or use a cloud-based service like `Amazon RDS`.
 
-Install necessary dependancies:
+#### 3. Create Express Server:
+- Create a file named ``server.js`` and set up your Express server.
+
 ```bash
-    npm install express mongoose body-parser
+touch server.js
 ```
-
-###### 2. MongoDB Installation and Setup:
+#### 4. Define Product Model:
+- Create a directory named models and within that directory, create a file named ``Product.js`` to define your product model using Sequelize.
 
 ```bash
-npm install mongodb
+mkdir models
+touch models/Product.js
 ```
--------- 
-#### Set Up a MongoDB Instance:
-- You have two options for running MongoDB:
 
-###### a) Local Installation (for development purposes):
-- Download the MongoDB Community Server from the official website: [Click to download](https://www.mongodb.com/docs/manual/installation/)
-- Follow the installation instructions for your operating system.
-Start the MongoDB server using the appropriate command (refer to the installation guide).
+#### 5. Create Routes for Products:
+- Create a directory named routes and within that directory, create a file named products.js to define routes for handling products.
 
-###### b) MongoDB Atlas (cloud-based option):
-- Create a free MongoDB Atlas account: [click me](https://www.mongodb.com/docs/atlas/tutorial/deploy-free-tier-cluster/)
-- Deploy a free cluster and create a database user.
-- **Note** down the connection string provided by Atlas, which includes your cluster URL, database name, and username/password.
+```bash
+mkdir routes
+touch routes/products.js
+```
 
-###### 3. Create Express Server:
-- Create a file named ``server.js`` and set up your express server.
-
-###### 4. Define Product Model:
-- Create a directory named models and within that directory, create a file named ``Product.js``
-
-###### 5. Create routes for Products:
-- Create a directory named routes and within that directory, create a file named ``products.js``
-
-###### 6. Run the Server:
+#### 6. Run the Server:
 - Now, you can run your server by executing this command:
-```bash
-    node server.js
-```
-- Your RESTful API for products will be accessible at: `` http://localhost:3000/products``
-------------------------------
 
-**Note:** The code provided here is just a basic example of how you could structure your project files.
+```bash
+node server.js
+```
