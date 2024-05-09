@@ -27,7 +27,7 @@ touch models/Product.js
 ```
 
 #### 5. Create Routes for Products:
-- Create a directory named routes and within that directory, create a file named products.js to define routes for handling products.
+- Create a directory named routes and within that directory, create a file named ``products.js`` to define routes for handling products.
 
 ```bash
 mkdir routes
