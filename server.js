@@ -1,29 +1,56 @@
 // server.js
 const express = require("express");
-const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const { Sequelize } = require("sequelize");
 
 const app = express();
 const PORT = 3000;
 
-// app middleware
+// Middleware
 app.use(bodyParser.json());
 
-// database connection to mongodb
-mongoose.connect("mongodb://127.0.0.1:27017/products", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "Database connection error:"));
-db.once("open", () => {
-    console.log("Connected to MongoDB");
+// Database connection to MySQL
+const sequelize = new Sequelize("rest-db", "root", "", {
+  host: "localhost",
+  dialect: "mysql",
 });
 
-// product route
+// Testing the database connection
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Connected to MySQL database.");
+  })
+  .catch((err) => {
+    console.error("Unable to connect to the database:", err);
+  });
+
+// Define the Product model
+const Product = sequelize.define("Product", {
+  // Define your product attributes here
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  price: {
+    type: Sequelize.DECIMAL(10, 2),
+    allowNull: false,
+  },
+  description: {
+    type: Sequelize.TEXT,
+    allowNull: true,
+  },
+});
+
+// Synchronize the model with the database
+sequelize.sync().then(() => {
+  console.log("Product model synchronized with database.");
+});
+
+// Product route
 app.use("/products", require("./routes/products"));
 
-// start server
+// Start server
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
